@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>전자 서명 작성</title>
+    <title>창동고 연수 출석부</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="background-shape shape-1"></div>
     <div class="background-shape shape-2"></div>
 
     <div class="container">
         <header>
-            <h1>서명 등록 시스템</h1>
+            <h1>창동고 연수 출석부</h1>
             <p>자신의 연수와 부서를 선택한 뒤 서명해주세요.</p>
         </header>
-        
+
         <!-- 데이터 로딩 중 표시 -->
         <div id="initialLoader" class="initial-loader">
             <div class="loader-circle"></div>
@@ -46,7 +48,7 @@
 
             <div class="input-group">
                 <label for="name">성명</label>
-                <input type="text" id="name" name="name" placeholder="홍길동" required autocomplete="off">
+                <input type="text" id="name" name="name" placeholder="김창동" required autocomplete="off">
             </div>
 
             <div class="input-group canvas-group">
@@ -73,4 +75,5 @@
     <!-- 스크립트 연결 -->
     <script src="app.js"></script>
 </body>
+
 </html>
