@@ -70,6 +70,17 @@ function resizeCanvas() {
     const width = wrapper.clientWidth;
     const height = 200;
 
+    // 모바일 브라우저 세로 스크롤 시 URL창 숨김에 따른 세로 사이즈 변경만 일어날 경우 캔버스 닦임 방지
+    if (canvas.style.width === width + 'px') {
+        return; 
+    }
+
+    // 작성 중이던 서명이 날아가지 않도록 안전하게 백업
+    let tempImgData = null;
+    if (hasSigned) {
+        tempImgData = canvas.toDataURL();
+    }
+
     canvas.style.width = width + 'px';
     canvas.style.height = height + 'px';
 
@@ -82,6 +93,15 @@ function resizeCanvas() {
     ctx.lineJoin = 'round';
     ctx.lineWidth = 3;
     ctx.strokeStyle = '#000000';
+
+    // 백업이 있다면 크기에 맞추어 다시 그려넣기
+    if (tempImgData) {
+        const img = new Image();
+        img.onload = () => {
+             ctx.drawImage(img, 0, 0, width, height);
+        };
+        img.src = tempImgData;
+    }
 }
 
 window.addEventListener('resize', resizeCanvas);
