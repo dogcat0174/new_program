@@ -241,11 +241,13 @@ form.addEventListener('submit', async (e) => {
             document.getElementById('name').value = '';
             clearBtn.click();
         } else {
-            throw new Error(result.error || 'Server returned error');
+            throw new Error(result.error || '저장에 실패했습니다.');
         }
     } catch (error) {
         console.error('Error submitting form:', error);
-        showStatus('저장에 실패했습니다. 관리자에게 문의하세요.', 'error');
+        // 서버에서 받아온 에러 전문 중 자바스크립트 'Error: ' 문자열 등 제거
+        const msg = error.message.replace('Error: ', ''); 
+        showStatus(msg, 'error');
     } finally {
         setLoadingState(false);
     }
